@@ -125,22 +125,39 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 .twinkleWrap {
+  padding-top: 2.8em;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+.twinkleWrap .canvas {
+  position: relative;
+  overflow: hidden;
+  width: 92vw;
+  height: 82vh;
+  margin: 0 auto;
+  background-color: aquamarine;
+}
+.twinkleLine {
   display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90vw;
-  height: 90vh;
   margin: 0 auto;
   perspective: 1000px;
-  perspective-origin: 130% 10%;
-  background-color: aquamarine;
+  perspective-origin: 120% 10%;
+  opacity: 0.8;
 }
 .twinkleWrap .twinkles {
   display: flex;
   position: relative;
   padding: 10px 0;
+}
+.twinkleWrap .twinkles:last-child .twinkle:after {
+  display: none;
 }
 .twinkleWrap .twinkles li {
   padding: 0 10px;
@@ -161,32 +178,151 @@ table {
   position: relative;
   width: 100px;
   height: 200px;
-  /* perspective: 500px; */
-  /* transform: rotateY(-20deg); */
+  transform: translateZ(-20px);
   transform-style: preserve-3d;
   transition: 1s;
+  color: transparent;
+  /* -webkit-box-shadow: 0 33px 36px -5px rgba(55, 158, 149, 0.87);
+  box-shadow: 0 33px 36px -5px rgba(55, 158, 149, 0.87); */
 }
-.twinkles:hover .twinkle {
-  transform: rotateY(60deg);
+.twinkle::after {
+  content: "";
+  position: absolute;
+  bottom: -23%;
+  left: 15%;
+  width: 93%;
+  height: 19%;
+  opacity: 0.3;
+  border-radius: 20%;
+  background: rgb(38, 143, 133);
+  background: radial-gradient(
+    circle,
+    rgba(38, 143, 133, 1) 24%,
+    rgba(74, 161, 153, 1) 45%,
+    rgba(110, 179, 173, 0.8058035714285714) 65%,
+    rgba(173, 212, 209, 0) 81%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotateX(-90deg) translateZ(-3px) translateY(18px);
+}
+/* .twinkle::before {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: -15%;
+  width: 40%;
+  height: 40%;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(254, 255, 255, 0) 44%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 56%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateZ(30px);
+  transition: 1s linear;
+} */
+.twinkle:hover {
+  transform: translateZ(-20px) rotateY(60deg);
+}
+/* .twinkle:hover::before {
+  opacity: 1;
+  top: -19%;
+  left: -25%;
+} */
+.twinkle:hover .front {
+  background: rgb(0, 234, 255);
+  background: linear-gradient(
+    320deg,
+    rgba(0, 234, 255, 1) 0%,
+    rgba(239, 254, 255, 1) 72%,
+    rgba(255, 255, 255, 1) 84%,
+    rgba(154, 247, 255, 1) 100%
+  );
+  /* background: rgb(0, 234, 255);
+  background: linear-gradient(
+    328deg,
+    rgba(0, 234, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  ); */
+}
+.twinkle .front::before,
+.twinkle .front::after {
+  display: block;
+  opacity: 0;
+  content: "";
+  position: absolute;
+  left: -70%;
+  width: 200%;
+  transform: rotate(310deg) translateY(30px);
+  background: rgb(0 234 255);
+  transition: 1s linear;
+}
+.twinkle .front::before {
+  top: 62%;
+  height: 20%;
+}
+.twinkle .front::after {
+  top: 103%;
+  height: 5%;
+  -webkit-box-shadow: 10px 14px 25px 5px rgba(0, 234, 255, 0);
+  box-shadow: 10px 14px 25px 5px rgba(0, 234, 255, 0);
+}
+.twinkle:hover .front::before,
+.twinkle:hover .front::after {
+  opacity: 1;
+  left: -76%;
+  background: #fff;
+}
+.twinkle:hover .front::before {
+  top: -16%;
+}
+.twinkle:hover .front::after {
+  top: 32%;
+  -webkit-box-shadow: 10px 14px 20px 5px rgba(255, 255, 255, 1);
+  box-shadow: 10px 14px 20px 5px rgba(255, 255, 255, 1);
+}
+.twinkle:hover .left {
+  background: rgb(209, 252, 168);
+  background: linear-gradient(
+    328deg,
+    rgba(209, 252, 168, 1) 0%,
+    rgba(238, 255, 222, 1) 100%
+  );
+}
+.twinkle:hover .top {
+  background: rgb(161, 255, 207);
+  background: linear-gradient(
+    328deg,
+    rgba(161, 255, 207, 1) 0%,
+    rgba(226, 255, 240, 1) 100%
+  );
 }
 .twinkle span {
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100px;
   height: 200px;
+  opacity: 0.7;
 }
 .twinkle .front {
+  overflow: hidden;
   transform: rotateY(0deg) translateZ(20px);
-  background: rgb(0 234 255 / 70%);
+  background: rgb(0 234 255);
   z-index: 100;
 }
 .twinkle .back {
   transform: rotateY(180deg) translateZ(20px);
-  background: hsla(120, 100%, 50%, 0.7);
+  /* background: rgb(128 244 255); */
+  /* background: rgb(77 245 204 / 70%); */
+  background: rgb(52 180 227);
 }
 .twinkle .left,
 .twinkle .right {
@@ -194,11 +330,20 @@ table {
 }
 .twinkle .right {
   transform: rotateY(90deg) translateZ(80px);
-  background: hsla(60, 100%, 50%, 0.7);
+  /* background: rgb(13 195 162); */
+  /* background: rgb(47 222 188 / 70%); */
+  /* background: rgb(59 212 197); */
+  background: rgb(59 212 197);
+  background: linear-gradient(
+    360deg,
+    rgba(59, 212, 197, 1) 44%,
+    rgba(50, 172, 160, 1) 100%
+  );
 }
 .twinkle .left {
   transform: rotateY(-90deg) translateZ(20px);
-  background: hsla(180, 100%, 50%, 0.7);
+  /* background: rgb(137 253 134); */
+  background: rgb(209 252 168);
 }
 .twinkle .top,
 .twinkle .bottom {
@@ -208,9 +353,186 @@ table {
 
 .twinkle .top {
   transform: rotateX(90deg) translateZ(20px);
-  background: hsla(240, 100%, 50%, 0.7);
+  background: rgb(161 255 207);
 }
 .twinkle .bottom {
   transform: rotateX(-90deg) translateZ(180px);
-  background: hsla(300, 100%, 50%, 0.7);
+  background: rgb(9 144 119);
+}
+
+.heart {
+  position: absolute;
+  z-index: 100;
+  width: 4em;
+  height: 4em;
+  /* transform: translateZ(100px); */
+}
+.heart span {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: #ff2992;
+  border-style: solid;
+  border-width: 1em;
+  color: transparent;
+}
+.heart .left {
+  left: 0;
+  border-radius: 50% 100% 0 100%;
+  transform: rotate(13deg);
+}
+.heart .right {
+  right: 14px;
+  border-radius: 100% 50% 100% 0;
+  transform: rotate(13deg);
+}
+.heart .bottom {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-width: 1em 0 0 0;
+}
+/* .twinkle.shine::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(30px);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    328deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(230, 253, 255, 1) 100%
+  );
+  z-index: 10;
+} */
+
+.backgroundCloud {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* animation: clouds 100s infinite; */
+}
+/* canvas:hover .backgroundCloud {
+  
+} */
+
+.backgroundCloud .clouds {
+  position: absolute;
+  width: 300px;
+  height: 90px;
+}
+.backgroundCloud .clouds:nth-child(1) {
+  top: 15%;
+  left: 8%;
+  transform: scale(0.7);
+  opacity: 0.7;
+}
+.backgroundCloud .clouds:nth-child(2) {
+  left: 41%;
+  top: 57%;
+}
+.backgroundCloud .clouds:nth-child(3) {
+  right: 4.5%;
+  top: 30%;
+  transform: scale(0.9);
+  z-index: 10;
+}
+.backgroundCloud .clouds:nth-child(3) .cloud {
+  background-color: rgb(219 255 243);
+}
+.backgroundCloud .clouds:nth-child(4) {
+  left: 21%;
+  top: 45%;
+  transform: scale(0.4);
+  animation: cloudMove 2s infinite;
+  /* transition: 4s linear; */
+  z-index: 10;
+}
+.backgroundCloud .clouds:nth-child(5) {
+  left: -10%;
+  top: 82%;
+  transform: scale(0.6);
+  z-index: 10;
+}
+.backgroundCloud .cloud {
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: #f2fffb;
+  border-radius: 50%;
+  color: transparent;
+}
+.backgroundCloud .cloud:nth-child(1) {
+  left: 0;
+  bottom: -33px;
+  width: 234px;
+}
+.backgroundCloud .cloud:nth-child(2) {
+  top: -10px;
+  left: 44px;
+  width: 145px;
+}
+.backgroundCloud .cloud:nth-child(3) {
+  top: 45px;
+  right: -20px;
+  width: 200px;
+  height: 82px;
+}
+.backgroundCloud .cloud:nth-child(4) {
+  left: 83px;
+  bottom: -46px;
+  width: 65px;
+  height: 50px;
+  transform: rotate(345deg);
+}
+.backgroundCloud .cloud:nth-child(5) {
+  top: 10px;
+  left: 154px;
+  width: 120px;
+}
+.backgroundCloud .cloud:nth-child(6) {
+  left: -36px;
+  bottom: -43px;
+  width: 152px;
+  height: 56px;
+}
+.backgroundCloud .cloud:nth-child(7) {
+  right: 51px;
+  bottom: -46px;
+  width: 125px;
+  height: 77px;
+  transform: rotate(163deg);
+}
+@keyframes clouds {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+@keyframes coludStop {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 21%;
+  }
+}
+@keyframes cloudMove {
+  0% {
+    top: 44%;
+    transition: 2s linear;
+  }
+  50% {
+    top: 46%;
+  }
+  100% {
+    top: 44%;
+  }
 }
