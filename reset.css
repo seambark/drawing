@@ -204,6 +204,10 @@ table {
     rgba(255, 255, 255, 0) 100%
   );
   transform: rotateX(-90deg) translateZ(-3px) translateY(18px);
+  transition: 1s linear;
+}
+.twinkle:hover::after {
+  width: 60%;
 }
 /* .twinkle::before {
   opacity: 0;
@@ -360,14 +364,14 @@ table {
   background: rgb(9 144 119);
 }
 
-.heart {
+/*.heart {
   position: absolute;
   z-index: 100;
   width: 4em;
   height: 4em;
-  /* transform: translateZ(100px); */
+  transform: translateZ(100px);
 }
-.heart span {
+ .heart span {
   display: block;
   position: absolute;
   width: 0;
@@ -392,7 +396,7 @@ table {
   bottom: 0;
   width: 100%;
   border-width: 1em 0 0 0;
-}
+} */
 /* .twinkle.shine::before {
   content: "";
   display: block;
@@ -407,6 +411,49 @@ table {
   );
   z-index: 10;
 } */
+.shape {
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: 1s linear;
+}
+/* .shape:hover {
+  transform: translateZ(-20px) rotateY(60deg);
+} */
+.twinkle:hover .heart {
+  display: block;
+  opacity: 1;
+  transition: 1s linear;
+}
+.twinkle .heart {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -45px 0 0 -50px;
+  width: 100px;
+  height: 90px;
+  transform: scale(0.7) rotateY(0deg) translateZ(20px);
+  z-index: 100;
+}
+.twinkle .heart:before,
+.twinkle .heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: pink;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.twinkle .heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
 
 .backgroundCloud {
   position: absolute;
@@ -416,10 +463,6 @@ table {
   height: 100%;
   /* animation: clouds 100s infinite; */
 }
-/* canvas:hover .backgroundCloud {
-  
-} */
-
 .backgroundCloud .clouds {
   position: absolute;
   width: 300px;
@@ -508,6 +551,119 @@ table {
   height: 77px;
   transform: rotate(163deg);
 }
+.backgroundCloud .rain {
+  position: absolute;
+  top: 0;
+  opacity: 1;
+  top: 150%;
+  left: 50%;
+  width: 48%;
+  opacity: 0;
+  z-index: -1;
+  transform: translateX(-52%);
+  transition: 1s linear;
+}
+.backgroundCloud .clouds .rain.drop {
+  opacity: 1;
+  top: 150%;
+  /* animation: drop 3s infinite; */
+}
+.backgroundCloud .rain .raindrop {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 70px;
+  margin: 10px 0;
+  border-width: 0 3px 0 3px;
+  border-style: dashed;
+  border-color: #787878;
+  background-color: transparent;
+  color: transparent;
+  font-size: 0;
+}
+.backgroundCloud .rain .raindrop::before,
+.backgroundCloud .rain .raindrop::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 88%;
+  border-width: 0 3px 0 3px;
+  border-style: solid;
+  border-color: #929292;
+  background-color: transparent;
+}
+.backgroundCloud .rain .raindrop::before {
+  border-right-width: 5px;
+  height: 25px;
+  top: 10%;
+  left: -32%;
+  border-style: none double none dotted;
+}
+.backgroundCloud .rain .raindrop::after {
+  height: 40px;
+  top: 25%;
+  right: -25%;
+}
+.backgroundCloud .rain .raindrop:nth-child(even) {
+  margin: -25% 0 0 14%;
+}
+
+.backgroundCloud .lightning {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 100;
+}
+.backgroundCloud .lightning li {
+}
+.backgroundCloud .lightning li:nth-child(2) {
+  transform: scale(0.8);
+}
+.backgroundCloud .lightning li:nth-child(3) {
+  transform: scale(0.6);
+}
+.backgroundCloud .lightning li:nth-child(2) .light {
+  margin: 0 25px;
+}
+.backgroundCloud .lightning li:nth-child(3) .light {
+  margin: 0 30px;
+}
+.backgroundCloud .lightning .light {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: 0 20px;
+  border-left: 20px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 72px solid #ffe138;
+  color: transparent;
+  font-size: 0;
+  transform: skewX(340deg);
+}
+.backgroundCloud .lightning .light::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 55px;
+  border-left: 10px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 72px solid #ffe96c;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 150%;
+  }
+}
 @keyframes clouds {
   0% {
     left: -100%;
@@ -536,3 +692,20 @@ table {
     top: 44%;
   }
 }
+
+/* .dottedTest {
+  display: flex;
+  position: absolute;
+  top: 150%;
+  left: 10%;
+}
+.dotted {
+  display: block;
+  margin: 0 20px;
+  background-image: linear-gradient(#f5f5dc 33%, rgba(255, 255, 255, 0) 0%);
+  background-position: right;
+  background-size: 5px 40px;
+  background-repeat: repeat-y;
+  width: 5px;
+  height: 600px;
+} */
