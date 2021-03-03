@@ -125,13 +125,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-.twinkleWrap {
+.canvasWrap {
   padding-top: 2.8em;
   width: 100vw;
   height: 100vh;
   background-color: #fff;
 }
-.twinkleWrap .canvas {
+.canvasWrap .canvas {
   position: relative;
   overflow: hidden;
   width: 92vw;
@@ -139,7 +139,7 @@ table {
   margin: 0 auto;
   background-color: aquamarine;
 }
-.twinkleLine {
+.twinkleWrap {
   display: flex;
   width: 100%;
   height: 100%;
@@ -455,7 +455,8 @@ table {
   transform-origin: 100% 100%;
 }
 
-.backgroundCloud {
+/* canvasBackground */
+.canvasBackground {
   position: absolute;
   left: 0;
   top: 0;
@@ -463,31 +464,31 @@ table {
   height: 100%;
   /* animation: clouds 100s infinite; */
 }
-.backgroundCloud .clouds {
+.clouds {
   position: absolute;
   width: 300px;
   height: 90px;
 }
-.backgroundCloud .clouds:nth-child(1) {
+.clouds:nth-child(1) {
   top: 15%;
   left: 8%;
   transform: scale(0.7);
   opacity: 0.7;
 }
-.backgroundCloud .clouds:nth-child(2) {
+.clouds:nth-child(2) {
   left: 41%;
   top: 57%;
 }
-.backgroundCloud .clouds:nth-child(3) {
+.clouds:nth-child(3) {
   right: 4.5%;
   top: 30%;
   transform: scale(0.9);
   z-index: 10;
 }
-.backgroundCloud .clouds:nth-child(3) .cloud {
+.clouds:nth-child(3) .cloud {
   background-color: rgb(219 255 243);
 }
-.backgroundCloud .clouds:nth-child(4) {
+.clouds:nth-child(4) {
   left: 21%;
   top: 45%;
   transform: scale(0.4);
@@ -495,13 +496,13 @@ table {
   /* transition: 4s linear; */
   z-index: 10;
 }
-.backgroundCloud .clouds:nth-child(5) {
+.clouds:nth-child(5) {
   left: -10%;
   top: 82%;
   transform: scale(0.6);
   z-index: 10;
 }
-.backgroundCloud .cloud {
+.cloud {
   position: absolute;
   display: block;
   width: 100px;
@@ -510,48 +511,50 @@ table {
   border-radius: 50%;
   color: transparent;
 }
-.backgroundCloud .cloud:nth-child(1) {
+.cloud:nth-child(1) {
   left: 0;
   bottom: -33px;
   width: 234px;
 }
-.backgroundCloud .cloud:nth-child(2) {
+.cloud:nth-child(2) {
   top: -10px;
   left: 44px;
   width: 145px;
 }
-.backgroundCloud .cloud:nth-child(3) {
+.cloud:nth-child(3) {
   top: 45px;
   right: -20px;
   width: 200px;
   height: 82px;
 }
-.backgroundCloud .cloud:nth-child(4) {
+.cloud:nth-child(4) {
   left: 83px;
   bottom: -46px;
   width: 65px;
   height: 50px;
   transform: rotate(345deg);
 }
-.backgroundCloud .cloud:nth-child(5) {
+.cloud:nth-child(5) {
   top: 10px;
   left: 154px;
   width: 120px;
 }
-.backgroundCloud .cloud:nth-child(6) {
+.cloud:nth-child(6) {
   left: -36px;
   bottom: -43px;
   width: 152px;
   height: 56px;
 }
-.backgroundCloud .cloud:nth-child(7) {
+.cloud:nth-child(7) {
   right: 51px;
   bottom: -46px;
   width: 125px;
   height: 77px;
   transform: rotate(163deg);
 }
-.backgroundCloud .rain {
+
+/* rain */
+.rain {
   position: absolute;
   top: 0;
   opacity: 1;
@@ -561,74 +564,124 @@ table {
   opacity: 0;
   z-index: -1;
   transform: translateX(-52%);
-  transition: 1s linear;
+  height: 100vmin;
 }
-.backgroundCloud .clouds .rain.drop {
+.clouds .rain.drop {
   opacity: 1;
   top: 150%;
-  /* animation: drop 3s infinite; */
 }
-.backgroundCloud .rain .raindrop {
+.rain .raindrop {
   display: block;
-  position: relative;
+  /* position: relative; */
+  position: absolute;
   width: 100%;
-  height: 70px;
+  /* height: 70px; */
+  height: 13vmin;
   margin: 10px 0;
   border-width: 0 3px 0 3px;
   border-style: dashed;
-  border-color: #787878;
+  /* border-color: #787878; */
+  border-color: #54a086;
   background-color: transparent;
   color: transparent;
   font-size: 0;
+  /* animation: dropOpac 3s infinite; */
 }
-.backgroundCloud .rain .raindrop::before,
-.backgroundCloud .rain .raindrop::after {
+.clouds .rain.drop .raindrop {
+}
+.rain .raindrop::before,
+.rain .raindrop::after {
   content: "";
   display: inline-block;
   position: absolute;
   width: 88%;
   border-width: 0 3px 0 3px;
   border-style: solid;
-  border-color: #929292;
+  /* border-color: #929292; */
+  border-color: #5fbc9d;
   background-color: transparent;
 }
-.backgroundCloud .rain .raindrop::before {
+.rain .raindrop::before {
   border-right-width: 5px;
-  height: 25px;
+  /* height: 25px; */
+  height: 4.301vmin;
   top: 10%;
   left: -32%;
   border-style: none double none dotted;
+  /* animation: drop 2s infinite; */
 }
-.backgroundCloud .rain .raindrop::after {
+.rain .raindrop::after {
   height: 40px;
   top: 25%;
   right: -25%;
+  /* animation: dropOpac 2s infinite; */
+  animation-delay: 1s;
 }
-.backgroundCloud .rain .raindrop:nth-child(even) {
+.rain .raindrop:nth-child(even) {
   margin: -25% 0 0 14%;
 }
+.rain .raindrop:nth-child(1) {
+  top: 0;
+}
+.rain .raindrop:nth-child(2) {
+  top: 17%;
+}
+.rain .raindrop:nth-child(3) {
+  top: 20%;
+}
+.rain .raindrop::before:nth-child(3) {
+  /* animation-name: drop;
+  animation-delay: 1s; */
+}
+.rain .raindrop:nth-child(4) {
+  top: 37%;
+}
+.rain .raindrop:nth-child(4)::after {
+  animation-delay: 2s;
+}
+.rain .raindrop:nth-child(5) {
+  top: 40%;
+}
+.rain .raindrop:nth-child(5)::before {
+  animation-delay: 2s;
+}
+.rain .raindrop:nth-child(6) {
+  top: 57%;
+  /* animation-delay: 3s; */
+}
+.rain .raindrop:nth-child(7) {
+  top: 60%;
+}
+.rain .raindrop:nth-child(7)::after {
+  animation-delay: 3s;
+}
+.rain .raindrop:nth-child(8) {
+  top: 80%;
+  animation-delay: 2s;
+}
 
-.backgroundCloud .lightning {
+/* lightning */
+.lightning {
   position: absolute;
   left: 0;
   top: 100%;
   z-index: 100;
 }
-.backgroundCloud .lightning li {
+.lightning li {
 }
-.backgroundCloud .lightning li:nth-child(2) {
+.lightning li:nth-child(2) {
   transform: scale(0.8);
 }
-.backgroundCloud .lightning li:nth-child(3) {
+.lightning li:nth-child(3) {
   transform: scale(0.6);
 }
-.backgroundCloud .lightning li:nth-child(2) .light {
+.lightning li:nth-child(2) .light {
   margin: 0 25px;
 }
-.backgroundCloud .lightning li:nth-child(3) .light {
+.lightning li:nth-child(3) .light {
   margin: 0 30px;
 }
-.backgroundCloud .lightning .light {
+.lightning .light {
   display: inline-block;
   position: relative;
   width: 0;
@@ -641,7 +694,7 @@ table {
   font-size: 0;
   transform: skewX(340deg);
 }
-.backgroundCloud .lightning .light::after {
+.lightning .light::after {
   content: "";
   display: block;
   position: absolute;
@@ -654,14 +707,23 @@ table {
   border-top: 72px solid #ffe96c;
 }
 
-@keyframes drop {
+/* 애니메이션 */
+@keyframes dropOpac {
   0% {
     opacity: 0;
-    top: 0;
   }
   100% {
     opacity: 1;
-    top: 150%;
+  }
+}
+@keyframes drop {
+  0% {
+    height: 0;
+    opacity: 0.4;
+  }
+  100% {
+    height: 4.301vmin;
+    opacity: 1;
   }
 }
 @keyframes clouds {
