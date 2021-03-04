@@ -94,47 +94,55 @@
   right: 0;
   width: 30%;
   height: 74%;
-  /* background-color: lightskyblue; */
   margin: 2% 0 5%;
-  border-right: 2px solid #000;
 }
-.fish .tail::before,
-.fish .tail::after {
+.fish .tail::before {
   content: "";
   display: block;
   position: absolute;
-  right: -3px;
-  width: 93%;
-  height: 20%;
+  right: -20%;
+  top: 22%;
+  width: 47%;
+  height: 50%;
+  transform: rotate(43deg);
+  border-width: 2px;
   border-style: solid;
-  border-color: #000;
+  border-color: #000 #000 transparent transparent;
+  border-radius: 50%;
 }
-.fish .tail::before {
-  top: 5px;
-  transform: rotate(333deg);
-  border-width: 2px 2px 0 0;
-  border-radius: 0 100% 0 0;
-}
-.fish .tail::after {
-  bottom: 4px;
-  transform: rotate(26deg);
-  border-width: 0 2px 2px 0;
-  border-radius: 0 0 100% 0;
-}
-
 .fish .tail span {
   display: block;
-  /* background-color: #ffe877; */
+  position: absolute;
+  width: 100%;
+  height: 50%;
 }
 .fish .tail .top {
-  width: 0;
-  height: 0;
-  border-top: 50px solid #ffe877;
-  border-right: 50px solid transparent;
+  top: 10%;
+  transform: rotate(339deg);
+  border-top: 2px solid #000;
 }
 .fish .tail .bottom {
-  width: 0;
-  height: 0;
-  border-bottom: 100px solid #ffe877;
-  border-right: 100px solid transparent;
+  bottom: 10%;
+  transform: rotate(20deg);
+  border-bottom: 2px solid #000;
+}
+.fish .tail .top::before,
+.fish .tail .bottom::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 30%;
+  height: 66%;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
+}
+.fish .tail .top::before {
+  border-color: #000 #000 transparent transparent;
+  /* transform: rotate(20deg); */
+}
+.fish .tail .bottom::before {
+  bottom: 0;
+  border-color: transparent #000 #000 transparent;
 }
