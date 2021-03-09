@@ -67,48 +67,59 @@
 .fish .body .fins {
   position: absolute;
   left: 38%;
-  width: 40%;
+  width: 34%;
   height: 100%;
 }
 .fish .body .fins span {
   display: inline-block;
   position: absolute;
-  width: 100%;
-  height: 20%;
   border-style: solid;
   border-color: #000;
 }
 .fish .body .fins .finTop {
-  top: -17%;
-  transform: rotate(361deg);
+  top: -47%;
+  width: 100%;
+  height: 50%;
+  transform: rotate(-1deg);
   border-width: 2px 2px 0 2px;
   border-radius: 80% 50% 0 0;
 }
 .fish .body .fins .finBottom {
-  bottom: -15%;
-  transform: rotate(352deg);
+  bottom: -39%;
+  left: 17%;
+  width: 65%;
+  height: 41%;
+  transform: rotate(355deg);
   border-width: 0 2px 2px 2px;
   border-radius: 0 0 50% 90%;
 }
 .fish .tail {
-  right: 0;
+  right: -19px;
   width: 30%;
-  height: 74%;
-  margin: 2% 0 5%;
+  height: 90%;
 }
-.fish .tail::before {
+.fish .tail::before,
+.fish .tail::after {
   content: "";
   display: block;
   position: absolute;
-  right: -20%;
-  top: 22%;
-  width: 47%;
-  height: 50%;
-  transform: rotate(43deg);
+  right: 4%;
   border-width: 2px;
   border-style: solid;
-  border-color: #000 #000 transparent transparent;
+  border-color: transparent transparent #000 #000;
   border-radius: 50%;
+}
+.fish .tail::before {
+  top: 7.5%;
+  width: 35%;
+  height: 37%;
+  transform: rotate(43deg);
+}
+.fish .tail::after {
+  top: 43.5%;
+  width: 43%;
+  height: 41%;
+  transform: rotate(217deg);
 }
 .fish .tail span {
   display: block;
@@ -117,13 +128,13 @@
   height: 50%;
 }
 .fish .tail .top {
-  top: 10%;
-  transform: rotate(339deg);
+  top: 2%;
+  transform: rotate(328deg);
   border-top: 2px solid #000;
 }
 .fish .tail .bottom {
-  bottom: 10%;
-  transform: rotate(20deg);
+  bottom: 8%;
+  transform: rotate(31deg);
   border-bottom: 2px solid #000;
 }
 .fish .tail .top::before,
@@ -131,18 +142,20 @@
   content: "";
   display: block;
   position: absolute;
-  right: 0;
-  width: 30%;
-  height: 66%;
+  right: -7px;
+  width: 23%;
+  height: 58%;
   border-width: 2px;
   border-style: solid;
   border-radius: 50%;
 }
 .fish .tail .top::before {
+  top: -7px;
   border-color: #000 #000 transparent transparent;
-  /* transform: rotate(20deg); */
+  transform: rotate(65deg);
 }
 .fish .tail .bottom::before {
-  bottom: 0;
+  bottom: -6px;
   border-color: transparent #000 #000 transparent;
+  transform: rotate(302deg);
 }
