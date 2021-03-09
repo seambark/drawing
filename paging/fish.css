@@ -7,15 +7,12 @@
 .fishWrap {
 }
 .fish {
-  /* display: flex; */
   position: absolute;
-  /* width: 20%;
-  height: 15%; */
   top: 20%;
   left: 10%;
   width: 400px;
   height: 150px;
-  /* background-color: lightcoral; */
+  padding-right: 14%;
 }
 .fish > div {
   position: absolute;
@@ -30,7 +27,6 @@
   bottom: 0;
   width: 30%;
   height: 93%;
-  /* background-color: lightgreen; */
   border-width: 0 2px 0 0;
   border-style: solid;
   border-color: transparent #000 transparent transparent;
@@ -59,7 +55,7 @@
 }
 .fish .body {
   left: 0;
-  width: 300px;
+  width: 75%;
   border: 2px solid #000;
   border-radius: 70% 50% 70% 50%;
   background-color: transparent;
@@ -93,8 +89,39 @@
   border-width: 0 2px 2px 2px;
   border-radius: 0 0 50% 90%;
 }
+.fish .body .fins span::before,
+.fish .body .fins span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  border-width: 0 2px;
+  border-style: solid;
+  border-color: #000;
+}
+.fish .body .fins span::before {
+  left: 23%;
+  width: 65%;
+  height: 89%;
+}
+.fish .body .fins span::after {
+  left: 44%;
+  width: 20%;
+  height: 99%;
+}
+.fish .body .fins .finTop::before,
+.fish .body .fins .finTop::after {
+  top: initial;
+  bottom: 4px;
+}
+.fish .body .fins .finTop::before {
+  height: 82%;
+}
+.fish .body .fins .finTop::after {
+  height: 93%;
+}
 .fish .tail {
-  right: -19px;
+  right: -4.7%;
   width: 30%;
   height: 90%;
 }
@@ -117,7 +144,7 @@
 }
 .fish .tail::after {
   top: 43.5%;
-  width: 43%;
+  width: 39%;
   height: 41%;
   transform: rotate(217deg);
 }
@@ -142,7 +169,7 @@
   content: "";
   display: block;
   position: absolute;
-  right: -7px;
+  right: -5%;
   width: 23%;
   height: 58%;
   border-width: 2px;
@@ -150,12 +177,50 @@
   border-radius: 50%;
 }
 .fish .tail .top::before {
-  top: -7px;
+  top: -10%;
   border-color: #000 #000 transparent transparent;
   transform: rotate(65deg);
 }
 .fish .tail .bottom::before {
-  bottom: -6px;
+  bottom: -10%;
   border-color: transparent #000 #000 transparent;
   transform: rotate(302deg);
+}
+.fish .tail .top::after,
+.fish .tail .bottom::after,
+.fish .tail .pattern::before,
+.fish .tail .pattern::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  background-color: #000;
+}
+.fish .tail .top::after {
+  top: 31%;
+  width: 88%;
+  transform: rotate(10deg);
+}
+.fish .tail .bottom::after {
+  bottom: 23%;
+  width: 84%;
+  transform: rotate(349deg);
+}
+.fish .tail .pattern {
+  top: 45%;
+  width: 69%;
+  height: 2px;
+  background-color: #000;
+}
+.fish .tail .pattern::before {
+  top: -600%;
+  left: -1%;
+  width: 85%;
+  transform: rotate(349deg);
+}
+.fish .tail .pattern::after {
+  left: -1%;
+  bottom: -1000%;
+  width: 143%;
+  transform: rotate(9deg);
 }
