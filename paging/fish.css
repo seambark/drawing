@@ -25,7 +25,8 @@
 }
 .bell {
   position: relative;
-  width: 12vw;
+  /* width: 12vw; */
+  width: 9.828vh;
   margin: 0 auto;
   padding-bottom: 5vh;
 }
@@ -47,7 +48,8 @@
 }
 .bell .body {
   position: relative;
-  width: 10vw;
+  /* width: 10vw; */
+  width: 8.316vh;
   height: 8vh;
   margin: 0 auto;
   background-color: transparent;
@@ -68,16 +70,22 @@
 .bell .bottom {
   width: 100%;
   height: 3vh;
-  margin-top: -1.1vw;
+  /* margin-top: -1.1vw; */
+  margin-top: -1vh;
   border-color: transparent #000 #000 #000;
   border-radius: 50%;
 }
 .fish {
   position: relative;
-  width: 400px;
-  height: 150px;
+  /* width: 400px; //240/90
+  height: 150px; */
+  /* width: 43.15vh;
+  height: 16.182vh; */
+  width: 25.89vh;
+  height: 9.71vh;
+  margin: 2.95vh 0;
   padding-right: 14%;
-  transform: scale(0.6);
+  /* transform: scale(0.6); */
 }
 .fish > div {
   position: absolute;
@@ -290,7 +298,8 @@
 }
 .glassRod {
   position: relative;
-  width: 6vw;
+  /* width: 6vw; */
+  width: 5.293vh;
   margin: 0 auto;
   padding-top: 5.5vh;
 }
