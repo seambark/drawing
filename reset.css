@@ -125,6 +125,76 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* 메뉴 */
+.menu {
+  margin-top: 25px;
+  text-align: center;
+}
+.menu li {
+  display: inline-block;
+  padding: 0 10px;
+}
+.menu li a {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  color: transparent;
+  font-size: 0;
+  vertical-align: top;
+  transition: 1s linear;
+}
+.menu .menuNemo {
+  width: 20px;
+  background-color: #434343;
+}
+.menu .menuNemo.on,
+.menu .menuNemo:hover {
+  background: rgb(127, 255, 212);
+  background: radial-gradient(
+    circle,
+    rgba(127, 255, 212, 1) 0,
+    rgba(67, 231, 176, 1) 100%
+  );
+}
+.menu .menuFish {
+  width: 40px;
+}
+.menu .menuFish.on::before,
+.menu .menuFish:hover::before {
+  background: rgb(255, 232, 119);
+  background: radial-gradient(
+    circle,
+    rgba(255, 232, 119, 1) 9%,
+    rgba(255, 216, 24, 1) 91%
+  );
+}
+.menu .menuFish.on::after,
+.menu .menuFish:hover::after {
+  border-right-color: #ffd818;
+}
+.menu .menuFish::before,
+.menu .menuFish::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menu .menuFish::before {
+  left: 0;
+  width: 80%;
+  height: 60%;
+  border-radius: 50%;
+  background-color: #434343;
+}
+.menu .menuFish::after {
+  right: 0;
+  border: 11px solid transparent;
+  border-left: none;
+  border-right-color: #434343;
+}
+
 .canvasWrap {
   padding-top: 2.8em;
   width: 100vw;
@@ -137,20 +207,9 @@ table {
   width: 92vw;
   height: 82vh;
   margin: 0 auto;
-  background-color: aquamarine;
+  background-color: #7fffd4;
 }
-.menu {
-  text-align: center;
-}
-.menu li {
-  display: inline-block;
-}
-.menu li a {
-  display: inline-block;
-  padding: 10px;
-  color: #000;
-  font-size: 2rem;
-}
+
 .twinkleWrap {
   display: flex;
   width: 100%;
@@ -490,6 +549,7 @@ table {
 .clouds:nth-child(2) {
   left: 41%;
   top: 57%;
+  /* animation: cloudMove 5s infinite; */
 }
 .clouds:nth-child(3) {
   right: 4.5%;
@@ -511,8 +571,13 @@ table {
 .clouds:nth-child(5) {
   left: -10%;
   top: 82%;
-  transform: scale(0.6);
   z-index: 10;
+  transform: scale(0.6);
+  animation-duration: 20s;
+  animation-name: clouds;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
 }
 .cloud {
   position: absolute;
@@ -741,9 +806,11 @@ table {
 @keyframes clouds {
   0% {
     left: -100%;
+    top: 82%;
   }
   100% {
     left: 110%;
+    top: 84%;
   }
 }
 @keyframes coludStop {
@@ -783,3 +850,40 @@ table {
   width: 5px;
   height: 600px;
 } */
+
+@media screen and (max-width: 768px) {
+  .canvasWrap {
+    padding-top: 0;
+  }
+  .canvasWrap .canvas {
+    width: 100vw;
+    height: 88vh;
+  }
+  .twinkleWrap {
+    transform: scale(0.55);
+  }
+  .clouds:nth-child(1) {
+    top: 3%;
+    left: -15%;
+    transform: scale(0.4);
+  }
+  .clouds:nth-child(2) {
+    left: 14%;
+    top: 52%;
+    transform: scale(0.6);
+  }
+  .clouds:nth-child(3) {
+    right: -12.5%;
+    top: 26%;
+    transform: scale(0.5);
+  }
+  .clouds:nth-child(4) {
+    left: -3%;
+    top: 30%;
+    transform: scale(0.2);
+  }
+  .clouds:nth-child(5) {
+    left: -30%;
+    transform: scale(0.4);
+  }
+}
