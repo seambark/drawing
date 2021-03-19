@@ -1,5 +1,10 @@
 @import "../reset.css";
 
+.fishBellFront,
+.fishBellColor,
+.fishBellBack {
+  pointer-events: none;
+}
 .canvasWrap.fishes .canvas {
   background-color: #ffe877;
 }
@@ -22,14 +27,17 @@
   padding-top: 8vh;
   transform-style: preserve-3d;
   transform: rotateY(50deg);
-  /* transform: rotateY(50deg) rotateZ(0deg); */
+  /* animation-name: wave;
+  animation-duration: 7s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out; */
+  transform-origin: top;
+}
+.fishBellWrap.on .fishBell {
   animation-name: wave;
   animation-duration: 7s;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
-  /* animation-delay: 0.2s; */
-  /* animation-direction: alternate; */
-  transform-origin: top;
 }
 .fishBell::before {
   content: "";
