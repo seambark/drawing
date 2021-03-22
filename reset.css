@@ -571,7 +571,7 @@ table {
 .clouds:nth-child(4) {
   left: 21%;
   top: 45%;
-  transform: scale(0.4);
+  transform: scale(0.4, 0.5);
   animation: cloudMove 2s infinite;
   /* transition: 4s linear; */
   z-index: 10;
@@ -643,41 +643,30 @@ table {
 
 /* rain */
 .rain {
-  display: none;
   position: absolute;
   top: 0;
-  opacity: 1;
-  top: 150%;
   left: 50%;
   width: 48%;
+  height: 0;
   opacity: 0;
   z-index: -1;
   transform: translateX(-52%);
-  height: 100vmin;
-}
-.clouds .rain.drop {
-  display: block;
-  opacity: 1;
-  top: 150%;
+  transition: 0.2s linear;
 }
 .rain .raindrop {
   display: block;
-  /* position: relative; */
   position: absolute;
   width: 100%;
-  /* height: 70px; */
-  height: 13vmin;
+  height: 0;
   margin: 10px 0;
   border-width: 0 3px 0 3px;
   border-style: dashed;
-  /* border-color: #787878; */
   border-color: #54a086;
   background-color: transparent;
   color: transparent;
   font-size: 0;
-  /* animation: dropOpac 3s infinite; */
-}
-.clouds .rain.drop .raindrop {
+  opacity: 0;
+  transition: 0.2s linear;
 }
 .rain .raindrop::before,
 .rain .raindrop::after {
@@ -687,24 +676,20 @@ table {
   width: 88%;
   border-width: 0 3px 0 3px;
   border-style: solid;
-  /* border-color: #929292; */
   border-color: #5fbc9d;
   background-color: transparent;
 }
 .rain .raindrop::before {
   border-right-width: 5px;
-  /* height: 25px; */
   height: 4.301vmin;
   top: 10%;
   left: -32%;
   border-style: none double none dotted;
-  /* animation: drop 2s infinite; */
 }
 .rain .raindrop::after {
   height: 40px;
   top: 25%;
   right: -25%;
-  /* animation: dropOpac 2s infinite; */
   animation-delay: 1s;
 }
 .rain .raindrop:nth-child(even) {
@@ -715,39 +700,99 @@ table {
 }
 .rain .raindrop:nth-child(2) {
   top: 17%;
+  border-color: rgba(95, 188, 157, 0.95);
+}
+.rain .raindrop:nth-child(2)::before,
+.rain .raindrop:nth-child(2)::after {
+  border-color: rgba(95, 188, 157, 0.95);
 }
 .rain .raindrop:nth-child(3) {
   top: 20%;
+  border-color: rgba(95, 188, 157, 0.9);
 }
-.rain .raindrop::before:nth-child(3) {
-  /* animation-name: drop;
-  animation-delay: 1s; */
+.rain .raindrop:nth-child(3)::before,
+.rain .raindrop:nth-child(3)::after {
+  border-color: rgba(76, 167, 136, 0.9);
 }
 .rain .raindrop:nth-child(4) {
   top: 37%;
+  border-color: rgba(95, 188, 157, 0.85);
 }
+.rain .raindrop:nth-child(4)::before,
 .rain .raindrop:nth-child(4)::after {
-  animation-delay: 2s;
+  border-color: rgba(95, 188, 157, 0.85);
 }
 .rain .raindrop:nth-child(5) {
   top: 40%;
+  border-color: rgba(95, 188, 157, 0.8);
 }
-.rain .raindrop:nth-child(5)::before {
-  animation-delay: 2s;
+.rain .raindrop:nth-child(5)::before,
+.rain .raindrop:nth-child(5)::after {
+  border-color: rgba(95, 188, 157, 0.8);
 }
 .rain .raindrop:nth-child(6) {
   top: 57%;
-  /* animation-delay: 3s; */
+  border-color: rgba(95, 188, 157, 0.75);
+}
+.rain .raindrop:nth-child(6)::before,
+.rain .raindrop:nth-child(6)::after {
+  border-color: rgba(95, 188, 157, 0.75);
 }
 .rain .raindrop:nth-child(7) {
   top: 60%;
+  border-color: rgba(95, 188, 157, 0.7);
 }
+.rain .raindrop:nth-child(7)::before,
 .rain .raindrop:nth-child(7)::after {
-  animation-delay: 3s;
+  border-color: rgba(95, 188, 157, 0.7);
 }
 .rain .raindrop:nth-child(8) {
   top: 80%;
-  animation-delay: 2s;
+  border-color: rgba(95, 188, 157, 0.6);
+}
+.rain .raindrop:nth-child(8)::before,
+.rain .raindrop:nth-child(8)::after {
+  border-color: rgba(95, 188, 157, 0.6);
+}
+.clouds .rain.drop {
+  display: block;
+  opacity: 1;
+  top: 150%;
+  height: 100vmin;
+  transition: 2s ease-out;
+}
+.clouds .rain.drop .raindrop {
+  height: 13vmin;
+  opacity: 1;
+  animation: dropOpac 1s infinite;
+}
+.clouds .rain.drop .raindrop:nth-child(2) {
+  transition-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.clouds .rain.drop .raindrop:nth-child(3) {
+  transition-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.clouds .rain.drop .raindrop:nth-child(4) {
+  transition-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.clouds .rain.drop .raindrop:nth-child(5) {
+  transition-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+.clouds .rain.drop .raindrop:nth-child(6) {
+  transition-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+.clouds .rain.drop .raindrop:nth-child(7) {
+  transition-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+.clouds .rain.drop .raindrop:nth-child(8) {
+  transition-delay: 0.8s;
+  animation-delay: 0.8s;
 }
 
 /* lightning */
@@ -766,8 +811,6 @@ table {
   opacity: 0.5;
   transition: 0.2s linear;
   transition-delay: 0.3s;
-}
-.lightning li:nth-child(1) {
 }
 .lightning li:nth-child(2) {
   transform: scale(0.8);
@@ -812,14 +855,11 @@ table {
   display: block;
   top: 100%;
   opacity: 1;
-  /* z-index: 100; */
 }
 .lightning.drop li {
-  animation: light 1s 4;
+  /* animation: light 1s 4; */
+  animation: light 9s infinite;
   opacity: 0;
-}
-.lightning.drop li:nth-child(1) {
-  /* animation: lightningDrop 1s infinite; */
 }
 .lightning.drop li:nth-child(2) {
   top: 100px;
@@ -830,13 +870,75 @@ table {
   animation-delay: 0.6s;
 }
 
+/* .dottedTest {
+  display: flex;
+  position: absolute;
+  top: 150%;
+  left: 10%;
+}
+.dotted {
+  display: block;
+  margin: 0 20px;
+  background-image: linear-gradient(#f5f5dc 33%, rgba(255, 255, 255, 0) 0%);
+  background-position: right;
+  background-size: 5px 40px;
+  background-repeat: repeat-y;
+  width: 5px;
+  height: 600px;
+} */
+
+@media screen and (max-width: 768px) {
+  .canvasWrap {
+    padding-top: 0;
+  }
+  .canvasWrap .canvas {
+    width: 100vw;
+    height: 88vh;
+  }
+  .twinkleWrap {
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+  .clouds:nth-child(1) {
+    top: 3%;
+    left: -15%;
+    transform: scale(0.4);
+  }
+  .clouds:nth-child(2) {
+    left: 14%;
+    top: 52%;
+    transform: scale(0.6);
+  }
+  .clouds:nth-child(3) {
+    right: -12.5%;
+    top: 26%;
+    transform: scale(0.5, 0.6);
+  }
+  .clouds:nth-child(4) {
+    left: -3%;
+    top: 30%;
+    transform: scale(0.2);
+  }
+  .clouds:nth-child(5) {
+    left: -30%;
+    transform: scale(0.4);
+  }
+  .rain {
+    transform: translateX(-52%) scaleY(2.1);
+  }
+  .clouds .rain.drop {
+    top: 400%;
+  }
+}
+
 /* 애니메이션 */
 @keyframes dropOpac {
   0% {
-    opacity: 0;
+    opacity: 0.2;
+    height: 0;
   }
   100% {
     opacity: 1;
+    height: 13vmin;
   }
 }
 @keyframes drop {
@@ -883,64 +985,42 @@ table {
   0% {
     opacity: 0;
   }
+  7% {
+    opacity: 1;
+  }
+  14% {
+    opacity: 0;
+  }
+  21% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 1;
+  }
+  56% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* @keyframes light {
+  0% {
+    opacity: 0;
+  }
   80% {
     opacity: 1;
   }
   100% {
     opacity: 0;
   }
-}
-
-/* .dottedTest {
-  display: flex;
-  position: absolute;
-  top: 150%;
-  left: 10%;
-}
-.dotted {
-  display: block;
-  margin: 0 20px;
-  background-image: linear-gradient(#f5f5dc 33%, rgba(255, 255, 255, 0) 0%);
-  background-position: right;
-  background-size: 5px 40px;
-  background-repeat: repeat-y;
-  width: 5px;
-  height: 600px;
 } */
-
-@media screen and (max-width: 768px) {
-  .canvasWrap {
-    padding-top: 0;
-  }
-  .canvasWrap .canvas {
-    width: 100vw;
-    height: 88vh;
-  }
-  .twinkleWrap {
-    transform: translate(-50%, -50%) scale(0.55);
-  }
-  .clouds:nth-child(1) {
-    top: 3%;
-    left: -15%;
-    transform: scale(0.4);
-  }
-  .clouds:nth-child(2) {
-    left: 14%;
-    top: 52%;
-    transform: scale(0.6);
-  }
-  .clouds:nth-child(3) {
-    right: -12.5%;
-    top: 26%;
-    transform: scale(0.5);
-  }
-  .clouds:nth-child(4) {
-    left: -3%;
-    top: 30%;
-    transform: scale(0.2);
-  }
-  .clouds:nth-child(5) {
-    left: -30%;
-    transform: scale(0.4);
-  }
-}
