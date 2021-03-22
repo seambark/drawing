@@ -211,15 +211,20 @@ table {
 }
 
 .twinkleWrap {
-  display: flex;
+  /* display: flex;
   width: 100%;
   height: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: 0 auto;
   perspective: 1000px;
-  perspective-origin: 120% 10%;
+  perspective-origin: 190% 10%;
   opacity: 0.8;
 }
 .twinkleWrap .twinkles {
@@ -539,12 +544,14 @@ table {
   position: absolute;
   width: 300px;
   height: 90px;
+  /* cursor: pointer; */
 }
 .clouds:nth-child(1) {
   top: 15%;
   left: 8%;
   transform: scale(0.7);
   opacity: 0.7;
+  cursor: pointer;
 }
 .clouds:nth-child(2) {
   left: 41%;
@@ -556,6 +563,7 @@ table {
   top: 30%;
   transform: scale(0.9);
   z-index: 10;
+  cursor: pointer;
 }
 .clouds:nth-child(3) .cloud {
   background-color: rgb(219 255 243);
@@ -587,7 +595,9 @@ table {
   background-color: #f2fffb;
   border-radius: 50%;
   color: transparent;
-  pointer-events: none;
+  font-size: 0;
+  text-indent: -999999px;
+  /* pointer-events: none; */
 }
 .cloud:nth-child(1) {
   left: 0;
@@ -633,6 +643,7 @@ table {
 
 /* rain */
 .rain {
+  display: none;
   position: absolute;
   top: 0;
   opacity: 1;
@@ -645,6 +656,7 @@ table {
   height: 100vmin;
 }
 .clouds .rain.drop {
+  display: block;
   opacity: 1;
   top: 150%;
 }
@@ -742,16 +754,28 @@ table {
 .lightning {
   position: absolute;
   left: 0;
-  top: 100%;
-  z-index: 100;
+  top: 30%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.3s linear;
+  z-index: -1;
 }
 .lightning li {
+  position: absolute;
+  top: 0;
+  opacity: 0.5;
+  transition: 0.2s linear;
+  transition-delay: 0.3s;
+}
+.lightning li:nth-child(1) {
 }
 .lightning li:nth-child(2) {
   transform: scale(0.8);
 }
 .lightning li:nth-child(3) {
+  left: 5%;
   transform: scale(0.6);
+  transition-delay: 0.4s;
 }
 .lightning li:nth-child(2) .light {
   margin: 0 25px;
@@ -783,6 +807,27 @@ table {
   border-left: 10px solid transparent;
   border-right: 20px solid transparent;
   border-top: 72px solid #ffe96c;
+}
+.lightning.drop {
+  display: block;
+  top: 100%;
+  opacity: 1;
+  /* z-index: 100; */
+}
+.lightning.drop li {
+  animation: light 1s 4;
+  opacity: 0;
+}
+.lightning.drop li:nth-child(1) {
+  /* animation: lightningDrop 1s infinite; */
+}
+.lightning.drop li:nth-child(2) {
+  top: 100px;
+  animation-delay: 0.3s;
+}
+.lightning.drop li:nth-child(3) {
+  top: 170px;
+  animation-delay: 0.6s;
 }
 
 /* 애니메이션 */
@@ -834,6 +879,17 @@ table {
     top: 44%;
   }
 }
+@keyframes light {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 /* .dottedTest {
   display: flex;
@@ -861,7 +917,7 @@ table {
     height: 88vh;
   }
   .twinkleWrap {
-    transform: scale(0.55);
+    transform: translate(-50%, -50%) scale(0.55);
   }
   .clouds:nth-child(1) {
     top: 3%;
