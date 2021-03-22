@@ -587,6 +587,7 @@ table {
   background-color: #f2fffb;
   border-radius: 50%;
   color: transparent;
+  pointer-events: none;
 }
 .cloud:nth-child(1) {
   left: 0;
